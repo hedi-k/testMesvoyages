@@ -58,6 +58,23 @@ class VisiteRepository extends ServiceEntityRepository
         }
     }
     
+    public function add(Visite $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+    
+    public function remove(Visite $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 //    /**
 //     * @return Visite[] Returns an array of Visite objects
 //     */
